@@ -188,6 +188,8 @@ class MultiWii:
     """Function to receive a data packet from the board"""
     def getData(self, cmd):
         try:
+            self.ser.flushInput()
+            self.ser.flushOutput()
             start = time.time()
             self.sendCMD(0,cmd,[])
             while True:
